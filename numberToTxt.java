@@ -72,7 +72,7 @@ public class NewClass {
         return SecondNumberFromLast;
     }
 
-    private int HUNDRED = 100;
+    private String HUNDRED = " HUNDRED ";
 
     private int THOUSAND = 1000;
 
@@ -97,30 +97,26 @@ public class NewClass {
                                 equalsIgnoreCase("ZERO") ? "" : numberBetweenZeroAndTen(Integer.valueOf(secondNumber)));
             }
         } else if (length == 3) {
-            if (number > 10 && number < 20) {
-                outPut = numberBetweentenAndTwenty(number);
-            } else if (number > 19 && number < 100) {
-                String secondNumber = numberString.substring(1, 2);
-                String firstNumber = numberString.substring(0, 1);
-                outPut = tenMultiplicationNumbers(Integer.valueOf(firstNumber))
-                        + " " + (numberBetweenZeroAndTen(Integer.valueOf(secondNumber)).
-                                equalsIgnoreCase("ZERO") ? "" : numberBetweenZeroAndTen(Integer.valueOf(secondNumber)));
-            } else if (number > 99 && number < 999) {
-                String firstNumber = numberString.substring(0, 1);
-                String secondNumber = numberString.substring(1, 2);
-                String thirdNumber = numberString.substring(2, 3);
+            String firstNumber = numberString.substring(0, 1);
+            String secondNumber = numberString.substring(1, 2);
+            String thirdNumber = numberString.substring(2, 3);
 
-                String firstOutPut = numberBetweenZeroAndTen(Integer.valueOf(firstNumber));
+            String lastTwoNumberTxt;
+            String hundredPlaceCalculation;
 
-            }
+            //last two number calculation
+            lastTwoNumberTxt = tenMultiplicationNumbers(Integer.valueOf(secondNumber))
+                    + " " + (numberBetweenZeroAndTen(Integer.valueOf(thirdNumber)).
+                            equalsIgnoreCase("ZERO") ? "" : numberBetweenZeroAndTen(Integer.valueOf(thirdNumber)));
+            hundredPlaceCalculation = numberBetweenZeroAndTen(Integer.valueOf(firstNumber)) + HUNDRED;
+            outPut = hundredPlaceCalculation + lastTwoNumberTxt;
         }
         return outPut;
     }
 
     public static void main(String[] args) {
         NewClass cls = new NewClass();
-        String value = cls.numberToTxtCalculation(54);
+        String value = cls.numberToTxtCalculation(101);
         System.out.println(value);
     }
-
 }
